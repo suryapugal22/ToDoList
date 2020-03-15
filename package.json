@@ -1,0 +1,19 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "The First iteration of my ToDoList JS application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suryapugal22/ToDoList.git"
+  },
+  "author": "Surya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suryapugal22/ToDoList/issues"
+  },
+  "homepage": "https://github.com/suryapugal22/ToDoList#readme"
+}
