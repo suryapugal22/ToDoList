@@ -32,7 +32,7 @@ $(function () {
 $("#list").keydown(function (e) {
     if (e.keyCode === 13) {
         add(this.value);
-        var data = {"list":this.value};
+        var data = { "list": this.value };
         user.send(data);
     }
 });
@@ -55,8 +55,9 @@ function appendContent(data, callBack) {
     var content = "";
     for (let d of data) {
         content += "<li>";
-        content += "<input type='checkbox' name='list' id=''>";
+        // content += "<input type='checkbox' name='list' id=''>";
         content += `<label> ${d.list} </label>`;
+        content += `<button class="delete"> <i class="fa fa-trash" aria-hidden="true"></i> </i></button>`
         content += "</li>";
     }
     callBack(content);
