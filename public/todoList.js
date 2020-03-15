@@ -46,19 +46,31 @@ function add(list) {
     toDoList.push({ list });
     localStorage.setItem("yourList", JSON.stringify(toDoList));
     // $("#list").val('');
-    window.location.reload();
+    // window.location.reload();
 }
 
 
 
 function appendContent(data, callBack) {
     var content = "";
-    for (let d of data) {
-        content += "<li>";
-        // content += "<input type='checkbox' name='list' id=''>";
+    for (var d of data) {
+        var obj = { "list": "data" };
+        // console.log(d.list);
+        content += `<li>`;
         content += `<label> ${d.list} </label>`;
-        content += `<button class="delete"> <i class="fa fa-trash" aria-hidden="true"></i> </i></button>`
-        content += "</li>";
+        content += `<button class='delete' onclick="del('${d.id}')"> <i class='fa fa-trash' aria-hidden='true'></i> </i></button>`
+        content += `</li>`;
     }
     callBack(content);
+}
+
+function del(data) {
+    var toDoList = _.pluck(JSON.parse(localStorage.getItem("yourList")), "id");
+
+    console.log(toDoList);
+
+    user.delete(data, function (callBack) {
+        console.log(callBack);
+        return;
+    });
 }

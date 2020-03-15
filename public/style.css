@@ -128,3 +128,10 @@ li button{
     background-color: red;
     border-radius: 0px 5px 5px 0px;
 }
+
+
+li:hover button{
+    left: -70px;
+    transition: all 1.5s linear;
+
+}
