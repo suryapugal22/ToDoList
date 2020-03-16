@@ -2,7 +2,7 @@ var user = new userServices;
 
 
 $(function () {
-    var toDate = new Date();
+    let toDate = new Date();
     console.log(moment(toDate).format("MMM Do YY"));
     $("#date").append(moment(toDate).format("MMM Do YY"));
 
@@ -18,7 +18,7 @@ $("#refresh").click(function () {
 
 
 $(function () {
-    var toDoList = JSON.parse(localStorage.getItem("yourList"));
+    let toDoList = JSON.parse(localStorage.getItem("yourList"));
     if (toDoList == null) {
         var toDoList = [];
     }
@@ -39,7 +39,7 @@ $("#list").keydown(function (e) {
 
 
 function add(list) {
-    var toDoList = JSON.parse(localStorage.getItem("yourList"));
+    let toDoList = JSON.parse(localStorage.getItem("yourList"));
     if (toDoList == null) {
         var toDoList = [];
     }
@@ -54,8 +54,6 @@ function add(list) {
 function appendContent(data, callBack) {
     var content = "";
     for (var d of data) {
-        var obj = { "list": "data" };
-        // console.log(d.list);
         content += `<li>`;
         content += `<label> ${d.list} </label>`;
         content += `<button class='delete' onclick="del('${d.id}')"> <i class='fa fa-trash' aria-hidden='true'></i> </i></button>`
@@ -65,7 +63,7 @@ function appendContent(data, callBack) {
 }
 
 function del(data) {
-    var toDoList = _.pluck(JSON.parse(localStorage.getItem("yourList")), "id");
+    let toDoList = _.pluck(JSON.parse(localStorage.getItem("yourList")), "id");
 
     console.log(toDoList);
 

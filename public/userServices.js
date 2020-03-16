@@ -13,13 +13,10 @@ class userServices {
         var formData = data;
         console.log(data);
         var url = "https://5e6cfb3e4e86f8001618c887.mockapi.io/todoList";
-        $.post(url, formData, function (data) {
-            console.log(data);
-            return;
-        });
+        $.post(url, formData, response => console.log(response));
     }
 
-    
+
     delete(data, callBack) {
         $.ajax({
             url: 'https://5e6cfb3e4e86f8001618c887.mockapi.io/todoList/' + data,
