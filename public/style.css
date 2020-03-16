@@ -71,7 +71,7 @@ body {
     width: -webkit-fill-available;
     border: 0px;
     padding: 5px;
-    border: solid 1px black;
+    /* border: solid 1px black; */
     border-radius: 5px;
     font-size: 14px;
 }
