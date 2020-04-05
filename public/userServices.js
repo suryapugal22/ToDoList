@@ -1,19 +1,50 @@
 class userServices {
 
-    get(callBack) {
-        var url = "https://5e6cfb3e4e86f8001618c887.mockapi.io/todoList";
-        $.get(url, function (data) {
-            callBack(data);
-            return;
-        });
+    // def(){
+    //     $.ajax({
+    //         url: url,
+    //         type: type,
+    //         async: false,
+    //         data: JSON.stringify( _data ),
+    //         traditional: true,
+    //         datatype: 'json',
+    //         success: result => { return callBack(result) },
+    //         error: result => { return callBack(result) }
+    //     })
+    // }
+
+
+
+
+    list(callBack) {
+        $.ajax({
+            url: "https://5e6cfb3e4e86f8001618c887.mockapi.io/todoList",
+            type: 'get',
+            async: false,
+            // data: JSON.stringify(data),
+            // datatype: json,
+            // traditional: true,
+            success: result => callBack(result),
+            error: result => callBack(result)
+        })
     }
 
 
     send(data) {
-        var formData = data;
-        console.log(data);
-        var url = "https://5e6cfb3e4e86f8001618c887.mockapi.io/todoList";
-        $.post(url, formData, response => console.log(response));
+        var formData = { "list": data };
+        console.log(formData);
+        $.ajax({
+            url: "https://5e6cfb3e4e86f8001618c887.mockapi.io/todoList",
+            type: 'POST',
+            async: false,
+            data: formData,
+            datatype: 'JSON',
+            // traditional: true,
+            success: result => console.log(result),
+            error: result => console.log(result)
+        })
+
+
     }
 
 
@@ -21,11 +52,12 @@ class userServices {
         $.ajax({
             url: 'https://5e6cfb3e4e86f8001618c887.mockapi.io/todoList/' + data,
             type: 'DELETE',
+            async: false,
             // data: JSON.stringify(data),
             // traditional: true,
             // dataType: 'json',
-            success: function (result) { callBack(result); },
-            error: function (result) { callBack(result); }
+            success: result => { return callBack(result) },
+            error: result => { return callBack(result) }
         });
     }
 }

@@ -1,74 +1,47 @@
 var user = new userServices;
 
-
 $(function () {
-    let toDate = new Date();
-    console.log(moment(toDate).format("MMM Do YY"));
-    $("#date").append(moment(toDate).format("MMM Do YY"));
-
-    user.get(function (data) {
-        localStorage.setItem("yourList", JSON.stringify(data));
-    })
-});
+    let date = new Date();
+    console.log(moment(date).format("Do MMM YY"));
+    $("#date").append(moment(date).format("Do MMM YY"));
 
 
-$("#refresh").click(function () {
-    $(this).toggleClass("rotate");
-});
+    user.list(data => {
+        console.log(data);
+        let content = '';
+        data.forEach(e => {
+            // console.log(e);
+            content += `<li> <p> ${e.list} </p> <button class="btn btn-primary" id="${e.id}" onclick=del(${e.id})> <i class="fa fa-trash-o" aria-hidden="true"></i> </button>
+            </li>`
+        });
 
-
-$(function () {
-    let toDoList = JSON.parse(localStorage.getItem("yourList"));
-    if (toDoList == null) {
-        var toDoList = [];
-    }
-    appendContent(toDoList, function (callBack) {
-        $("#toDoList").append(callBack);
-
+        $("#tList").append(content);
     });
-})
 
+});
 
-$("#list").keydown(function (e) {
+$("#newList").keydown(e => {
     if (e.keyCode === 13) {
-        add(this.value);
-        var data = { "list": this.value };
-        user.send(data);
+        let list = $("#newList").val();
+
+        if (list.trim() !== null && list.trim() !== "") {
+            user.send(list);
+            window.location.reload();
+        } else {
+           Swal.fire({
+               title: 'Nothing',
+               text: 'You Entered Nothing',
+               showCloseButton: true
+           });
+        }
     }
 });
 
+function del(id) {
+    user.delete(id, data => {
+        console.log(data);
 
-function add(list) {
-    let toDoList = JSON.parse(localStorage.getItem("yourList"));
-    if (toDoList == null) {
-        var toDoList = [];
-    }
-    toDoList.push({ list });
-    localStorage.setItem("yourList", JSON.stringify(toDoList));
-    // $("#list").val('');
-    // window.location.reload();
-}
-
-
-
-function appendContent(data, callBack) {
-    var content = "";
-    for (var d of data) {
-        content += `<li>`;
-        content += `<label> ${d.list} </label>`;
-        content += `<button class='delete' onclick="del('${d.id}')"> <i class='fa fa-trash' aria-hidden='true'></i> </i></button>`
-        content += `</li>`;
-    }
-    callBack(content);
-}
-
-function del(data) {
-    let toDoList = _.pluck(JSON.parse(localStorage.getItem("yourList")), "id");
-
-    console.log(toDoList);
-
-    user.delete(data, function (callBack) {
-        console.log(callBack);
-        return;
+        // window.location.reload();
     });
+    window.location.reload();
 }
