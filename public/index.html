@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossOrigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/swipejs/2.2.13/style.min.css">
     <link rel="stylesheet" href="style.css">
     <title>todo-List</title>
 
@@ -14,32 +15,24 @@
 <body>
 
     <div class="container-fluid">
-
         <div class="top">
             <p id="date"></p>
-            <!-- <i class="fa fa-trash-o" aria-hidden="true"></i> -->
-            <i class="fa fa-refresh" aria-hidden="true"></i>
         </div>
-
         <div class="main">
             <ol id="tList">
-                <!-- <li>
-                    <input type="checkbox" name="list" for="to-do_list" >
-                    <p>To-Do List</p>
-                    <button class="btn btn-primary"> <i class="fa fa-trash-o" aria-hidden="true"></i> </button>
-                </li> -->
             </ol>
         </div>
-
         <div class="bottom">
             <input type="text" id="newList">
         </div>
-
     </div>
+
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swipejs/2.2.13/swipe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="userServices.js"></script>
     <script src="todoList.js"></script>
